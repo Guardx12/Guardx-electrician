@@ -10,7 +10,7 @@ const quickLinks = [
 ];
 
 const stats = [
-  { k: "Avg response", v: "Same‑day slots" },
+  { k: "Avg response", v: "Same-day slots" },
   { k: "Testing", v: "Recorded (demo)" },
   { k: "Guarantee", v: "Workmanship covered" },
   { k: "Rating", v: "5.0 (demo)" },
@@ -20,13 +20,13 @@ const solutions = [
   {
     title: "Domestic fault finding",
     desc: "Trips, sparks, burning smells, sockets down — safe diagnosis with clear next steps.",
-    bullets: ["Isolate & make safe", "Pinpoint the fault", "Repair/replace", "Retest & verify"],
+    bullets: ["Make safe & isolate", "Pinpoint the fault", "Repair/replace", "Retest & verify"],
     img: "/images/electrician/elec-3.jpg",
   },
   {
     title: "Commercial maintenance",
     desc: "Planned maintenance to reduce downtime — lighting, distribution boards, small works and compliance checks.",
-    bullets: ["Scheduled visits", "Asset labelling (demo)", "Clear reporting", "Fast remedials"],
+    bullets: ["Scheduled visits", "Clear reporting", "Fast remedials", "Minimal disruption"],
     img: "/images/electrician/elec-1.jpg",
   },
   {
@@ -62,7 +62,7 @@ function Tag({ children }: { children: React.ReactNode }) {
 
 function Stars() {
   return (
-    <div className="flex items-center gap-1 text-neon" aria-label="5 star rating">
+    <div className="flex items-center gap-1 text-ember-500" aria-label="5 star rating">
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} viewBox="0 0 20 20" className="h-4 w-4 fill-current" aria-hidden="true">
           <path d="M10 15.27l-5.18 3.06 1.64-5.81L1.5 8.97l6-.48L10 3l2.5 5.49 6 .48-4.96 3.55 1.64 5.81z" />
@@ -74,11 +74,16 @@ function Stars() {
 
 export default function Page() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-ink">
+      {/* Subtle background grid */}
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-grid-faint opacity-60" />
+
       {/* Demo bar */}
       <div className="border-b border-white/10 bg-slatey">
         <div className="container flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-white/70">Showroom demo website • No forms collect data • Buttons are placeholders</p>
+          <p className="text-sm text-white/70">
+            Showroom demo website • One-page preview • Real client sites include full multi-page navigation
+          </p>
           <div className="flex items-center gap-3 text-sm">
             <a href="#" className="text-white/70 hover:text-white">← Back to examples</a>
             <span className="hidden text-white/25 sm:inline">|</span>
@@ -94,23 +99,23 @@ export default function Page() {
           <div className="sticky top-6 space-y-4">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-panel">
               <div className="flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-electric text-white shadow-glow">
-                  <span className="text-sm font-black tracking-widest">AE</span>
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-ember-600 text-white shadow-ember">
+                  <span className="text-sm font-black tracking-widest">RE</span>
                 </div>
                 <div className="leading-tight">
-                  <p className="text-sm font-extrabold tracking-wide text-white">ArcLine Electrical</p>
+                  <p className="text-sm font-extrabold tracking-wide text-white">Redline Electrical</p>
                   <p className="text-xs text-white/55">Domestic • Commercial • Landlords</p>
                 </div>
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
-                <Tag>Same‑day slots</Tag>
+                <Tag>Same-day slots</Tag>
                 <Tag>Testing (demo)</Tag>
                 <Tag>Insured (demo)</Tag>
               </div>
 
               <div className="mt-5 grid gap-2">
-                <a href="#quote" className="inline-flex items-center justify-center rounded-xl bg-electric px-4 py-3 text-sm font-black text-white shadow-glow hover:bg-blue-500">
+                <a href="#quote" className="inline-flex items-center justify-center rounded-xl bg-ember-600 px-4 py-3 text-sm font-black text-white shadow-ember hover:bg-ember-700">
                   Request a quote
                 </a>
                 <a href="tel:+447000000000" className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-black text-white hover:bg-white/10">
@@ -134,23 +139,29 @@ export default function Page() {
                 <Stars />
                 <p className="text-sm font-semibold text-white/80">5.0 (demo)</p>
               </div>
-              <p className="mt-2 text-sm text-white/60">No fake names — placeholder reviews only.</p>
+              <p className="mt-2 text-sm text-white/60">Placeholder reviews only — no fake names.</p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-ember-700/20 to-white/5 p-5">
+              <p className="text-xs font-semibold tracking-widest text-ember-200">EMERGENCY</p>
+              <p className="mt-2 text-sm font-semibold text-white">Faults made safe, fast.</p>
+              <p className="mt-2 text-sm text-white/60">Trips, burning smells, sparking sockets — call for urgent help.</p>
             </div>
           </div>
         </aside>
 
         {/* Main content */}
         <section className="lg:col-span-9">
-          {/* Hero: big mosaic + technical headline */}
+          {/* Hero: mosaic + technical headline */}
           <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6 shadow-panel">
             <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-6">
-                <p className="text-xs font-semibold tracking-widest text-neon">ELECTRICAL • SAFETY • COMPLIANCE</p>
+                <p className="text-xs font-semibold tracking-widest text-ember-200">ELECTRICAL • SAFETY • COMPLIANCE</p>
                 <h1 className="mt-3 text-balance text-4xl font-black tracking-tight text-white sm:text-5xl">
-                  Electricians for people who care about a clean finish and correct testing.
+                  Clean installs. Correct testing. No drama.
                 </h1>
                 <p className="mt-4 max-w-xl text-lg text-white/70">
-                  A different layout on purpose: more “industrial / technical” than typical trade sites, while still converting.
+                  A premium red + grey brand. This is a one-page showroom preview — real client websites include multiple pages.
                 </p>
 
                 <div id="quote" className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -182,7 +193,13 @@ export default function Page() {
                     "/images/electrician/elec-3.jpg",
                     "/images/electrician/elec-4.jpg",
                   ].map((src, i) => (
-                    <div key={src} className={"overflow-hidden rounded-2xl border border-white/10 bg-white/5 " + (i === 0 ? "sm:row-span-2" : "")}>
+                    <div
+                      key={src}
+                      className={
+                        "overflow-hidden rounded-2xl border border-white/10 bg-white/5 " +
+                        (i === 0 ? "sm:row-span-2" : "")
+                      }
+                    >
                       <Image src={src} alt="Electrician work image" width={1200} height={800} className="h-full w-full object-cover" />
                     </div>
                   ))}
@@ -217,7 +234,7 @@ export default function Page() {
                   <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                     {s.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-neon" />
+                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-ember-500" />
                         <span className="text-sm font-semibold text-white/80">{b}</span>
                       </li>
                     ))}
@@ -227,13 +244,15 @@ export default function Page() {
             ))}
           </div>
 
-          {/* Compliance: table-like block */}
+          {/* Compliance */}
           <div id="compliance" className="mt-10 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6 shadow-panel">
             <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>
-                <p className="text-xs font-semibold tracking-widest text-neon">COMPLIANCE</p>
+                <p className="text-xs font-semibold tracking-widest text-ember-200">COMPLIANCE</p>
                 <h2 className="mt-2 text-3xl font-black text-white">Safety-first documentation (demo)</h2>
-                <p className="mt-2 max-w-2xl text-white/70">This is a showroom demo. Real client sites include full multi-page structure and contact flows.</p>
+                <p className="mt-2 max-w-2xl text-white/70">
+                  Real builds include a full site: Home, Services, Areas, Reviews, About, Contact, FAQs, etc.
+                </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70">
                 <span className="font-semibold">Typical:</span> EICR • Part P • Testing • Labelling (demo)
@@ -262,7 +281,7 @@ export default function Page() {
                 <h2 className="mt-2 text-3xl font-black text-white">Covering Sussex</h2>
                 <p className="mt-2 text-white/70">Local response for callouts and scheduled installs.</p>
               </div>
-              <a href="tel:+447000000000" className="inline-flex items-center justify-center rounded-2xl bg-electric px-5 py-3 text-sm font-black text-white shadow-glow hover:bg-blue-500">
+              <a href="tel:+447000000000" className="inline-flex items-center justify-center rounded-2xl bg-ember-600 px-5 py-3 text-sm font-black text-white shadow-ember hover:bg-ember-700">
                 Call 07000 000000
               </a>
             </div>
@@ -307,11 +326,11 @@ export default function Page() {
           <footer className="mt-10 rounded-3xl border border-white/10 bg-slatey p-8">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-electric text-white shadow-glow">
-                  <span className="text-sm font-black tracking-widest">AE</span>
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-ember-600 text-white shadow-ember">
+                  <span className="text-sm font-black tracking-widest">RE</span>
                 </div>
                 <div>
-                  <p className="text-sm font-extrabold tracking-wide text-white">ArcLine Electrical</p>
+                  <p className="text-sm font-extrabold tracking-wide text-white">Redline Electrical</p>
                   <p className="text-xs text-white/55">Emergency • Commercial • Compliance (demo)</p>
                 </div>
               </div>
