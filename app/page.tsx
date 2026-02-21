@@ -1,41 +1,68 @@
 
 import Image from "next/image";
 
-const services = [
-  { title: "Emergency Fault Finding", desc: "Trips, burning smells, sockets not working — rapid diagnostics and safe repairs." },
-  { title: "Consumer Unit Upgrades", desc: "Modern RCBO boards installed and tested with certification (demo)." },
-  { title: "Lighting & Rewires", desc: "Indoor/outdoor lighting, partial rewires, and clean cable routing." },
-  { title: "EV Charger Install", desc: "Home EV charger installs with neat trunking and clear handover." },
-  { title: "EICR Safety Reports", desc: "Landlord and homeowner electrical inspections (demo)." },
-  { title: "Smart Home & Data", desc: "Ring, smart switches, Wi‑Fi access points and tidy network runs." },
+const quickLinks = [
+  { href: "#work", label: "Work" },
+  { href: "#solutions", label: "Solutions" },
+  { href: "#compliance", label: "Compliance" },
+  { href: "#areas", label: "Areas" },
+  { href: "#reviews", label: "Reviews" },
 ];
 
-const areas = ["Brighton", "Worthing", "Hove", "Chichester", "Littlehampton", "Horsham"];
-
-const trust = [
-  { k: "Response", v: "Same‑day slots" },
-  { k: "Rating", v: "5.0 (demo)" },
+const stats = [
+  { k: "Avg response", v: "Same‑day slots" },
+  { k: "Testing", v: "Recorded (demo)" },
   { k: "Guarantee", v: "Workmanship covered" },
-  { k: "Certified", v: "Tested & labelled" },
+  { k: "Rating", v: "5.0 (demo)" },
 ];
+
+const solutions = [
+  {
+    title: "Domestic fault finding",
+    desc: "Trips, sparks, burning smells, sockets down — safe diagnosis with clear next steps.",
+    bullets: ["Isolate & make safe", "Pinpoint the fault", "Repair/replace", "Retest & verify"],
+    img: "/images/electrician/elec-3.jpg",
+  },
+  {
+    title: "Commercial maintenance",
+    desc: "Planned maintenance to reduce downtime — lighting, distribution boards, small works and compliance checks.",
+    bullets: ["Scheduled visits", "Asset labelling (demo)", "Clear reporting", "Fast remedials"],
+    img: "/images/electrician/elec-1.jpg",
+  },
+  {
+    title: "Board upgrades & tidy installs",
+    desc: "Clean, organised installs with cable management and a professional finish.",
+    bullets: ["Consumer unit upgrades", "Lighting circuits", "Outdoor power", "Neat trunking"],
+    img: "/images/electrician/elec-2.jpg",
+  },
+];
+
+const industries = [
+  { title: "Homeowners", desc: "Faults, upgrades, lighting, outdoor power." },
+  { title: "Landlords", desc: "EICR-style checks (demo), smoke/heat alarms." },
+  { title: "Small commercial", desc: "Shops, offices, light industrial maintenance." },
+  { title: "Site teams", desc: "First-fix / second-fix support and snagging." },
+];
+
+const areas = ["Brighton", "Hove", "Worthing", "Chichester", "Littlehampton", "Horsham"];
 
 const reviews = [
-  { title: "Customer Review", body: "Explained the issue clearly, fixed it quickly, and left everything tidy." },
-  { title: "Customer Review", body: "Professional install and clean finish — great communication throughout." },
-  { title: "Customer Review", body: "On time, polite, and thorough. Would use again for future work." },
+  { title: "Customer Review", body: "Professional, calm, and thorough. Explained everything clearly." },
+  { title: "Customer Review", body: "Tidy work and good communication — the finish looks great." },
+  { title: "Customer Review", body: "Fast response and safe repair. Would use again." },
 ];
 
-function Pill({ children }: { children: React.ReactNode }) {
+function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-white/90">
+    <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/75">
       {children}
     </span>
   );
 }
 
-function StarRow() {
+function Stars() {
   return (
-    <div className="flex items-center gap-1 text-volt-300" aria-label="5 star rating">
+    <div className="flex items-center gap-1 text-neon" aria-label="5 star rating">
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} viewBox="0 0 20 20" className="h-4 w-4 fill-current" aria-hidden="true">
           <path d="M10 15.27l-5.18 3.06 1.64-5.81L1.5 8.97l6-.48L10 3l2.5 5.49 6 .48-4.96 3.55 1.64 5.81z" />
@@ -47,332 +74,258 @@ function StarRow() {
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-white">
-      <div className="bg-graphite text-white">
+    <main className="min-h-screen">
+      {/* Demo bar */}
+      <div className="border-b border-white/10 bg-slatey">
         <div className="container flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-white/80">
-            24/7 emergency cover • NICEIC‑style certification (demo) • Fully insured (demo)
-          </p>
+          <p className="text-sm text-white/70">Showroom demo website • No forms collect data • Buttons are placeholders</p>
           <div className="flex items-center gap-3 text-sm">
-            <a href="#" className="text-white/90 hover:text-white">← Back to examples</a>
+            <a href="#" className="text-white/70 hover:text-white">← Back to examples</a>
             <span className="hidden text-white/25 sm:inline">|</span>
-            <a href="tel:+447000000000" className="font-semibold hover:underline">Call: 07000 000000</a>
+            <a href="tel:+447000000000" className="font-semibold text-white hover:underline">Call 07000 000000</a>
           </div>
         </div>
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-xl bg-crimson-600 text-white shadow-soft">
-              <span className="text-lg font-black">RE</span>
-            </div>
-            <div className="leading-tight">
-              <p className="font-extrabold tracking-tight text-slate-900">Redline Electrical Co.</p>
-              <p className="text-xs text-slate-500">Domestic • Commercial • EV chargers</p>
-            </div>
-          </div>
-          <nav className="hidden items-center gap-6 text-sm text-slate-700 md:flex">
-            <a href="#services" className="hover:text-slate-900">Services</a>
-            <a href="#work" className="hover:text-slate-900">Our work</a>
-            <a href="#areas" className="hover:text-slate-900">Areas</a>
-            <a href="#reviews" className="hover:text-slate-900">Reviews</a>
-          </nav>
-          <div className="flex items-center gap-3">
-            <a
-              href="#quote"
-              className="hidden rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 sm:inline-flex"
-            >
-              Get a quote
-            </a>
-            <a
-              href="tel:+447000000000"
-              className="inline-flex rounded-xl bg-crimson-600 px-4 py-2 text-sm font-semibold text-white shadow-soft hover:bg-crimson-700"
-            >
-              Call now
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <section className="relative overflow-hidden bg-graphite">
-        <div className="absolute inset-0">
-          <Image src="/images/hero.jpg" alt="Electrician themed hero background" fill priority className="object-cover opacity-90" />
-          <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/80 to-graphite/30" />
-        </div>
-
-        <div className="relative">
-          <div className="container py-14 sm:py-20">
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-              <div className="lg:col-span-7">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Pill><span className="inline-flex h-2 w-2 rounded-full bg-volt-300" />Same‑day availability</Pill>
-                  <Pill><StarRow /><span className="text-white/90">5.0 demo rating</span></Pill>
-                  <Pill>Clear, fixed quotes</Pill>
+      {/* New layout: left rail + content */}
+      <div className="container grid gap-8 py-8 lg:grid-cols-12">
+        {/* Left rail */}
+        <aside className="lg:col-span-3">
+          <div className="sticky top-6 space-y-4">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-panel">
+              <div className="flex items-center gap-3">
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-electric text-white shadow-glow">
+                  <span className="text-sm font-black tracking-widest">AE</span>
                 </div>
+                <div className="leading-tight">
+                  <p className="text-sm font-extrabold tracking-wide text-white">ArcLine Electrical</p>
+                  <p className="text-xs text-white/55">Domestic • Commercial • Landlords</p>
+                </div>
+              </div>
 
-                <h1 className="mt-6 text-balance text-4xl font-black tracking-tight text-white sm:text-5xl">
-                  Electricians who turn up, test properly, and finish neatly.
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Tag>Same‑day slots</Tag>
+                <Tag>Testing (demo)</Tag>
+                <Tag>Insured (demo)</Tag>
+              </div>
+
+              <div className="mt-5 grid gap-2">
+                <a href="#quote" className="inline-flex items-center justify-center rounded-xl bg-electric px-4 py-3 text-sm font-black text-white shadow-glow hover:bg-blue-500">
+                  Request a quote
+                </a>
+                <a href="tel:+447000000000" className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-black text-white hover:bg-white/10">
+                  Call now
+                </a>
+              </div>
+
+              <div className="mt-5 grid gap-2 text-sm text-white/70">
+                {quickLinks.map((l) => (
+                  <a key={l.href} href={l.href} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10">
+                    <span className="font-semibold">{l.label}</span>
+                    <span className="text-white/35">→</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <p className="text-xs font-semibold tracking-widest text-white/55">RATING</p>
+              <div className="mt-2 flex items-center gap-3">
+                <Stars />
+                <p className="text-sm font-semibold text-white/80">5.0 (demo)</p>
+              </div>
+              <p className="mt-2 text-sm text-white/60">No fake names — placeholder reviews only.</p>
+            </div>
+          </div>
+        </aside>
+
+        {/* Main content */}
+        <section className="lg:col-span-9">
+          {/* Hero: big mosaic + technical headline */}
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6 shadow-panel">
+            <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-6">
+                <p className="text-xs font-semibold tracking-widest text-neon">ELECTRICAL • SAFETY • COMPLIANCE</p>
+                <h1 className="mt-3 text-balance text-4xl font-black tracking-tight text-white sm:text-5xl">
+                  Electricians for people who care about a clean finish and correct testing.
                 </h1>
-                <p className="mt-5 max-w-2xl text-pretty text-lg text-white/80">
-                  Fault finding, consumer unit upgrades, EV chargers, lighting and EICR safety checks — delivered with clean workmanship and clear communication.
+                <p className="mt-4 max-w-xl text-lg text-white/70">
+                  A different layout on purpose: more “industrial / technical” than typical trade sites, while still converting.
                 </p>
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a href="#quote" className="inline-flex items-center justify-center rounded-2xl bg-crimson-600 px-6 py-3 text-base font-bold text-white shadow-glow hover:bg-crimson-700">
-                    Get a fixed quote
-                  </a>
-                  <a href="#services" className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-base font-semibold text-white hover:bg-white/10">
-                    See services
-                  </a>
+                <div id="quote" className="mt-6 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-sm font-extrabold text-white">Emergency fault</p>
+                    <p className="mt-1 text-sm text-white/60">Trips, sparks, burning smell, sockets down</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-sm font-extrabold text-white">Planned work</p>
+                    <p className="mt-1 text-sm text-white/60">Upgrades, lighting, compliance checks</p>
+                  </div>
                 </div>
 
-                <div className="mt-10 grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur sm:grid-cols-4">
-                  {trust.map((t) => (
-                    <div key={t.k} className="rounded-2xl bg-white/5 p-4">
-                      <p className="text-sm font-semibold text-white">{t.k}</p>
-                      <p className="text-sm text-white/70">{t.v}</p>
+                <div className="mt-6 grid gap-3 sm:grid-cols-4">
+                  {stats.map((s) => (
+                    <div key={s.k} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p className="text-xs font-semibold tracking-widest text-white/55">{s.k.toUpperCase()}</p>
+                      <p className="mt-1 text-sm font-bold text-white">{s.v}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="lg:col-span-5">
-                <div id="quote" className="relative overflow-hidden rounded-3xl bg-white p-6 shadow-soft">
-                  <div className="absolute -right-20 -top-24 h-56 w-56 rounded-full bg-crimson-100 blur-2xl" />
-                  <div className="absolute -left-20 -bottom-24 h-56 w-56 rounded-full bg-volt-100 blur-2xl" />
-                  <p className="relative text-sm font-semibold text-crimson-700">Fast callback</p>
-                  <h2 className="relative mt-2 text-2xl font-black tracking-tight text-slate-900">What do you need help with?</h2>
-
-                  <div className="relative mt-5 grid gap-3">
-                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                      <p className="text-sm font-semibold text-slate-900">Emergency fault</p>
-                      <p className="text-sm text-slate-600">Trips, sparks, burning smell, sockets down</p>
+              <div className="lg:col-span-6">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    "/images/electrician/elec-1.jpg",
+                    "/images/electrician/elec-2.jpg",
+                    "/images/electrician/elec-3.jpg",
+                    "/images/electrician/elec-4.jpg",
+                  ].map((src, i) => (
+                    <div key={src} className={"overflow-hidden rounded-2xl border border-white/10 bg-white/5 " + (i === 0 ? "sm:row-span-2" : "")}>
+                      <Image src={src} alt="Electrician work image" width={1200} height={800} className="h-full w-full object-cover" />
                     </div>
-                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                      <p className="text-sm font-semibold text-slate-900">Upgrade / install</p>
-                      <p className="text-sm text-slate-600">Consumer unit, lighting, EV chargers</p>
-                    </div>
-                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                      <p className="text-sm font-semibold text-slate-900">Safety report</p>
-                      <p className="text-sm text-slate-600">EICR checks for landlords & homeowners (demo)</p>
-                    </div>
-                  </div>
-
-                  <div className="relative mt-6 grid gap-3 sm:grid-cols-2">
-                    <a href="tel:+447000000000" className="inline-flex items-center justify-center rounded-2xl bg-graphite px-5 py-3 text-sm font-bold text-white hover:bg-black">
-                      Call now
-                    </a>
-                    <a href="#services" className="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-900 hover:bg-slate-50">
-                      View services
-                    </a>
-                  </div>
-
-                  <p className="relative mt-4 text-xs text-slate-500">Demo website: buttons are placeholders. No forms collect data.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="container py-16">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-5">
-              <p className="text-sm font-semibold text-crimson-700">How it works</p>
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900">Clear process. Safe outcomes.</h2>
-              <p className="mt-3 text-slate-600">We keep everything simple: diagnose, quote, complete, certify (demo), and leave the area tidy.</p>
-            </div>
-            <div className="lg:col-span-7">
-              <ol className="grid gap-4 sm:grid-cols-2">
-                {[
-                  ["1", "Quick call", "Tell us what’s happening — we’ll advise next steps."],
-                  ["2", "Fixed quote", "Transparent pricing before any work starts."],
-                  ["3", "Safe repair", "Test, repair/replace, and verify the fix."],
-                  ["4", "Tidy finish", "Clean up, label where needed, and hand over."],
-                ].map(([n, t, d]) => (
-                  <li key={n} className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                    <div className="flex items-center gap-3">
-                      <div className="grid h-10 w-10 place-items-center rounded-xl bg-crimson-600 text-white font-black">{n}</div>
-                      <p className="text-lg font-extrabold tracking-tight text-slate-900">{t}</p>
-                    </div>
-                    <p className="mt-3 text-slate-600">{d}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="bg-slate-50">
-        <div className="container py-16">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-sm font-semibold text-crimson-700">Services</p>
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900">Domestic & commercial electrical</h2>
-              <p className="mt-2 max-w-2xl text-slate-600">Built for busy homeowners and property managers — quick scheduling, clean work, and proper testing.</p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm">
-              <span className="font-semibold">Typical jobs:</span> fault finding • upgrades • EV • lighting • EICR
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <div key={s.title} className="group rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="h-11 w-11 rounded-2xl bg-crimson-50 ring-1 ring-crimson-100 grid place-items-center">
-                    <span className="h-2.5 w-2.5 rounded-full bg-crimson-600" />
-                  </div>
-                  <p className="text-sm font-semibold text-slate-600">Certified work (demo)</p>
-                </div>
-                <h3 className="text-lg font-extrabold tracking-tight text-slate-900">{s.title}</h3>
-                <p className="mt-2 text-slate-600">{s.desc}</p>
-                <p className="mt-5 text-sm font-semibold text-crimson-700">Learn more →</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="work" className="bg-white">
-        <div className="container py-16">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-sm font-semibold text-crimson-700">Our work</p>
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900">Neat installs, labelled and tested</h2>
-              <p className="mt-2 max-w-2xl text-slate-600">A snapshot of common projects: consumer unit upgrades, lighting installs, and EV charger work (demo).</p>
-            </div>
-            <a href="#reviews" className="inline-flex w-fit items-center justify-center rounded-2xl bg-graphite px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-black">
-              See reviews
-            </a>
-          </div>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {[
-              { src: "/images/gallery-1.jpg", alt: "Consumer unit panel style image" },
-              { src: "/images/gallery-2.jpg", alt: "Lighting install style image" },
-              { src: "/images/gallery-3.jpg", alt: "EV charger install style image" },
-            ].map((g) => (
-              <div key={g.src} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-                <Image src={g.src} alt={g.alt} width={1200} height={800} className="h-72 w-full object-cover" />
-                <div className="p-6">
-                  <p className="text-sm font-semibold text-slate-900">Project quality</p>
-                  <p className="mt-1 text-sm text-slate-600">Clean finish, clear labelling and safe testing.</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-3 text-xs text-slate-500">Images included for demo purposes (generated locally).</p>
-        </div>
-      </section>
-
-      <section id="areas" className="bg-slate-50">
-        <div className="container py-16">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-5">
-              <p className="text-sm font-semibold text-crimson-700">Areas served</p>
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900">Local electricians across Sussex</h2>
-              <p className="mt-3 text-slate-600">Quick response times for emergency faults and planned installs.</p>
-
-              <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                <p className="text-sm font-semibold text-slate-900">Accreditations (demo)</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {["NICEIC‑style (demo)", "Part P (demo)", "Public Liability (demo)", "Workmanship Guarantee"].map((x) => (
-                    <span key={x} className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700">{x}</span>
                   ))}
                 </div>
               </div>
             </div>
-
-            <div className="lg:col-span-7">
-              <div className="grid gap-3 sm:grid-cols-2">
-                {areas.map((a) => (
-                  <div key={a} className="rounded-2xl border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-800 shadow-sm">{a}</div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="reviews" className="bg-white">
-        <div className="container py-16">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-sm font-semibold text-crimson-700">Reviews</p>
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900">Trusted workmanship</h2>
-              <div className="mt-3 flex items-center gap-3">
-                <StarRow />
-                <p className="text-sm font-semibold text-slate-700">5.0 (demo rating)</p>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
-              Placeholder reviews only — no fake names.
-            </div>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {reviews.map((r, idx) => (
-              <figure key={idx} className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-                <blockquote className="text-lg font-semibold text-slate-900">“{r.title}”</blockquote>
-                <p className="mt-3 text-slate-600">{r.body}</p>
-                <figcaption className="mt-6 text-sm font-semibold text-slate-700">Verified customer</figcaption>
-              </figure>
+          {/* Industries strip */}
+          <div className="mt-8 grid gap-3 md:grid-cols-4">
+            {industries.map((x) => (
+              <div key={x.title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-sm font-black text-white">{x.title}</p>
+                <p className="mt-2 text-sm text-white/60">{x.desc}</p>
+              </div>
             ))}
           </div>
 
-          <details className="mt-10 rounded-3xl border border-slate-200 bg-slate-50 p-6">
-            <summary className="cursor-pointer text-sm font-semibold text-slate-900">FAQ — do you provide certificates and reports?</summary>
-            <p className="mt-3 text-sm text-slate-700">
-              This is a showroom demo site. Real client work includes appropriate certification and documentation where required.
-            </p>
-          </details>
-        </div>
-      </section>
+          {/* Solutions: alternating rows */}
+          <div id="solutions" className="mt-10 space-y-6">
+            {solutions.map((s, idx) => (
+              <div key={s.title} className="grid gap-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-panel lg:grid-cols-12 lg:items-center">
+                <div className={"lg:col-span-5 " + (idx % 2 === 1 ? "lg:order-2" : "")}>
+                  <div className="overflow-hidden rounded-2xl border border-white/10">
+                    <Image src={s.img} alt={s.title} width={1400} height={900} className="h-72 w-full object-cover" />
+                  </div>
+                </div>
+                <div className={"lg:col-span-7 " + (idx % 2 === 1 ? "lg:order-1" : "")}>
+                  <p className="text-xs font-semibold tracking-widest text-white/55">SOLUTION</p>
+                  <h2 className="mt-2 text-3xl font-black text-white">{s.title}</h2>
+                  <p className="mt-3 text-white/70">{s.desc}</p>
+                  <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-neon" />
+                        <span className="text-sm font-semibold text-white/80">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
 
-      <section className="bg-graphite">
-        <div className="container py-14">
-          <div className="grid gap-8 rounded-3xl bg-gradient-to-r from-crimson-700 to-crimson-500 p-10 text-white shadow-soft lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-8">
-              <h2 className="text-3xl font-black tracking-tight">Need an electrician this week?</h2>
-              <p className="mt-2 text-white/90">Call now for urgent faults or get a fixed quote for planned work.</p>
+          {/* Compliance: table-like block */}
+          <div id="compliance" className="mt-10 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6 shadow-panel">
+            <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-semibold tracking-widest text-neon">COMPLIANCE</p>
+                <h2 className="mt-2 text-3xl font-black text-white">Safety-first documentation (demo)</h2>
+                <p className="mt-2 max-w-2xl text-white/70">This is a showroom demo. Real client sites include full multi-page structure and contact flows.</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70">
+                <span className="font-semibold">Typical:</span> EICR • Part P • Testing • Labelling (demo)
+              </div>
             </div>
-            <div className="lg:col-span-4 lg:text-right">
-              <a href="tel:+447000000000" className="inline-flex w-full items-center justify-center rounded-2xl bg-white px-6 py-3 text-base font-black text-graphite shadow-sm hover:bg-white/90 sm:w-auto">
+
+            <div className="mt-6 grid gap-3 lg:grid-cols-3">
+              {[
+                ["EICR-style reports (demo)", "Clear actions & retest plan."],
+                ["Part P (demo)", "Domestic work signed off correctly."],
+                ["Testing (demo)", "Results recorded, circuits labelled."],
+              ].map(([t, d]) => (
+                <div key={t} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <p className="text-sm font-black text-white">{t}</p>
+                  <p className="mt-2 text-sm text-white/60">{d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Areas */}
+          <div id="areas" className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-panel">
+            <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-semibold tracking-widest text-white/55">AREAS</p>
+                <h2 className="mt-2 text-3xl font-black text-white">Covering Sussex</h2>
+                <p className="mt-2 text-white/70">Local response for callouts and scheduled installs.</p>
+              </div>
+              <a href="tel:+447000000000" className="inline-flex items-center justify-center rounded-2xl bg-electric px-5 py-3 text-sm font-black text-white shadow-glow hover:bg-blue-500">
                 Call 07000 000000
               </a>
-              <p className="mt-2 text-xs text-white/80">Demo site — buttons are placeholders.</p>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="container py-10">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-center gap-3">
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-crimson-600 text-white">
-                <span className="text-lg font-black">RE</span>
-              </div>
-              <div>
-                <p className="font-extrabold tracking-tight text-slate-900">Redline Electrical Co.</p>
-                <p className="text-sm text-slate-600">Fault finding • Upgrades • EV • EICR</p>
-              </div>
-            </div>
-            <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600">
-              <a href="#services" className="hover:text-slate-900">Services</a>
-              <a href="#work" className="hover:text-slate-900">Our work</a>
-              <a href="#reviews" className="hover:text-slate-900">Reviews</a>
-              <a href="#quote" className="hover:text-slate-900">Quote</a>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {areas.map((a) => (
+                <div key={a} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm font-semibold text-white/80">
+                  {a}
+                </div>
+              ))}
             </div>
           </div>
-          <p className="mt-6 text-xs text-slate-500">This is a GuardX showroom example website (demo). No customer data is collected.</p>
-        </div>
-      </footer>
+
+          {/* Reviews */}
+          <div id="reviews" className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-panel">
+            <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-semibold tracking-widest text-white/55">REVIEWS</p>
+                <h2 className="mt-2 text-3xl font-black text-white">Trusted workmanship</h2>
+                <div className="mt-3 flex items-center gap-3">
+                  <Stars />
+                  <p className="text-sm font-semibold text-white/80">5.0 (demo)</p>
+                </div>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70">
+                Placeholder reviews only — no fake names.
+              </div>
+            </div>
+
+            <div className="mt-6 grid gap-6 md:grid-cols-3">
+              {reviews.map((r, i) => (
+                <figure key={i} className="rounded-2xl border border-white/10 bg-slatey p-6">
+                  <blockquote className="text-lg font-black text-white">“{r.title}”</blockquote>
+                  <p className="mt-3 text-sm text-white/65">{r.body}</p>
+                  <figcaption className="mt-6 text-xs font-semibold tracking-widest text-white/45">VERIFIED CUSTOMER</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <footer className="mt-10 rounded-3xl border border-white/10 bg-slatey p-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="flex items-center gap-3">
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-electric text-white shadow-glow">
+                  <span className="text-sm font-black tracking-widest">AE</span>
+                </div>
+                <div>
+                  <p className="text-sm font-extrabold tracking-wide text-white">ArcLine Electrical</p>
+                  <p className="text-xs text-white/55">Emergency • Commercial • Compliance (demo)</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-4 text-sm text-white/60">
+                <a href="#solutions" className="hover:text-white">Solutions</a>
+                <a href="#compliance" className="hover:text-white">Compliance</a>
+                <a href="#areas" className="hover:text-white">Areas</a>
+                <a href="#quote" className="hover:text-white">Quote</a>
+              </div>
+            </div>
+            <p className="mt-6 text-xs text-white/45">This is a GuardX showroom example website (demo). No customer data is collected.</p>
+          </footer>
+        </section>
+      </div>
     </main>
   );
 }

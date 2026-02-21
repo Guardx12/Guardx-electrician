@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light; }
 html, body { height: 100%; }
-body { @apply bg-white text-slate-900; }
-
+body { @apply bg-ink text-slate-100; }
 .container { @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
-.text-balance { text-wrap: balance; }
